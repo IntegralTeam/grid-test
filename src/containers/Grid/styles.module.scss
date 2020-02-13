@@ -1,0 +1,9 @@
+.grid {
+  display: grid;
+  row-gap: 2px;
+  column-gap: 2px;
+}
+
+.cell {
+  box-shadow: inset transparentize($color: #000000, $amount: 0.7) 0 0 0 1px;
+}

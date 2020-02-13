@@ -1,0 +1,12 @@
+.picker {
+  flex: 0 0 60px;
+  display: grid;
+  row-gap: 2px;
+  grid-template-columns: 40px;
+  grid-template-rows: 40px;
+  grid-auto-rows: 40px;
+  grid-auto-flow: row;
+}
+
+.color {
+}
