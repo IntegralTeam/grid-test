@@ -21,19 +21,15 @@ const Grid: FC<IProps> = ({
 }) => {
   const onColorDrop = useCallback(
     index => () => {
-      // if (!dragging) {
-      //   return;
-      // }
+      if (!dragging) {
+        return;
+      }
 
       onCellFill(index, currentColor);
     },
     [dragging, currentColor, onCellFill]
   );
-
-  useEffect(() => {
-    console.log({ dragging, currentColor });
-  }, [dragging, currentColor]);
-
+  
   return (
     <div
       className={styles.grid}
