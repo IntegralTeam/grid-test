@@ -3,6 +3,7 @@ import styles from "./styles.module.scss";
 import { Grid } from "../Grid";
 import { Picker } from "../Picker";
 import { COLORS } from "~/contstants/colors";
+import { Cursor } from "../Cursor";
 
 type Props = {};
 
@@ -15,10 +16,13 @@ const App: FC<Props> = ({}) => {
   const [dragging, setDragging] = useState(false);
   const [currentColor, setCurrentColor] = useState(COLORS[0]);
 
-  const onDragStart = useCallback((index: number) => {
-    setDragging(true);
-    setCurrentColor(COLORS[index]);
-  }, [setCurrentColor]);
+  const onDragStart = useCallback(
+    (index: number) => {
+      setDragging(true);
+      setCurrentColor(COLORS[index]);
+    },
+    [setCurrentColor]
+  );
 
   const onDragStop = useCallback(() => {
     setDragging(false);
@@ -32,8 +36,8 @@ const App: FC<Props> = ({}) => {
   );
 
   useEffect(() => {
-    window.addEventListener('mouseup', onDragStop);
-    return () => window.removeEventListener('mouseup', onDragStop);
+    window.addEventListener("mouseup", onDragStop);
+    return () => window.removeEventListener("mouseup", onDragStop);
   }, [dragging, onDragStop]);
 
   return (
@@ -48,6 +52,8 @@ const App: FC<Props> = ({}) => {
         currentColor={currentColor}
         onCellFill={onCellFill}
       />
+
+      <Cursor dragging={dragging} color={currentColor} />
     </div>
   );
 };
